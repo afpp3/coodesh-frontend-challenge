@@ -1,24 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Head from 'next/head'
 import Header from '../components/Header'
 import Table from '../components/Table'
 import SearchInput from '../components/SearchInput'
 
 export default function Home() {
-  // const [patients, setPatients] = useState<Patient[]>([])
   const [text, setText] = useState('')
-
-  // useEffect(() => {
-  //   try {
-  //     fetch(`https://randomuser.me/api/?results=50`).then(async (response) => {
-  //       const data = await response.json()
-  //       console.log(data)
-  //       setPatients(data.results)
-  //     })
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }, [])
 
   const handleSearch = (search: string) => {
     setText(search)

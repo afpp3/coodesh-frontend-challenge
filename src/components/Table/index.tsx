@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { AiOutlineReload } from 'react-icons/ai'
 import { useFetch } from '~/hooks/useFetch'
 import { Modal } from '../Modal'
 
@@ -79,6 +80,10 @@ const Table = () => {
     setShowModal(true)
   }, [])
 
+  if (patients.length < 1) {
+    return <h1 className="my-8 mx-auto">Loading...</h1>
+  }
+
   return (
     <>
       {modalPatient && (
@@ -106,36 +111,39 @@ const Table = () => {
             </th>
           </tr>
         </thead>
-
-        {!patients ? (
-          <h1>Loading</h1>
-        ) : (
-          <tbody>
-            {patients.map((patient) => (
-              <tr
-                className="border px-8 py-4 text-center even:bg-blue-100 "
-                key={patient.login.uuid}
-              >
-                <td className="py-2">{patient.name.first}</td>
-                <td className="py-2">{patient.gender}</td>
-                <td className="py-2">
-                  {new Date(patient.dob.date).toLocaleDateString()}
-                </td>
-                <td className="py-2">
-                  <button
-                    type="button"
-                    className="bg-blue-300 px-2 sm:px-8 lg:px-10 py-1 rounded-md transition duration-300 hover:bg-blue-500"
-                    onClick={() => showPatient(patient)}
-                  >
-                    View
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        )}
+        <tbody>
+          {patients.map((patient) => (
+            <tr
+              className="border px-8 py-4 text-center even:bg-blue-100 "
+              key={patient.login.uuid}
+            >
+              <td className="py-2">{patient.name.first}</td>
+              <td className="py-2">{patient.gender}</td>
+              <td className="py-2">
+                {new Date(patient.dob.date).toLocaleDateString()}
+              </td>
+              <td className="py-2">
+                <button
+                  type="button"
+                  className="bg-blue-300 px-2 sm:px-8 lg:px-10 py-1 rounded-md transition duration-300 hover:bg-blue-500"
+                  onClick={() => showPatient(patient)}
+                >
+                  View
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
-      <button onClick={loadMore}>Loading More..</button>
+      {patients.length > 1 && (
+        <button
+          className="flex justify-center items-center mb-5 text-base md:text-xl"
+          onClick={loadMore}
+        >
+          <AiOutlineReload size={20} className="mr-2" />
+          Loading More..
+        </button>
+      )}
     </>
   )
 }

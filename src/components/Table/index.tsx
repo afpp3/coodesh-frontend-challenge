@@ -1,88 +1,21 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { AiOutlineReload } from 'react-icons/ai'
-import { useFetch } from '~/hooks/useFetch'
+import { Patient } from '~/pages'
 import { Modal } from '../Modal'
 
-export type Patient = {
-  login: {
-    username: string
-    uuid: string
-  }
-  name: {
-    first: string
-    last: string
-    title: string
-  }
-  email: string
-  cell: string
-  phone: string
-  gender: string
-  dob: {
-    age: number
-    date: Date
-  }
-  picture: {
-    large: string
-    medium: string
-    thumbnail: string
-  }
-  nat: string
-  location: {
-    city: string
-    country: string
-    postcode: number
-    state: string
-    street: {
-      name: string
-      number: number
-    }
-  }
+type TableProps = {
+  patients: Patient[]
+  loadMore: () => void
 }
 
-type DataFetch = {
-  results: Patient[]
-  info: {
-    page: number
-    seed: string
-    version: string
-  }
-}
-
-const Table = () => {
+const Table = ({ loadMore, patients }: TableProps) => {
   const [showModal, setShowModal] = useState(false)
   const [modalPatient, setModalPatient] = useState<Patient>(Object)
-
-  const [patients, setPatients] = useState<Patient[]>([])
-  const [page, setPage] = useState(1)
-
-  const LIMIT_RESULTS = 50
-  const SEED = '2f10116f1799d353'
-
-  const { data } = useFetch<DataFetch>(
-    `/?page=${page}&results=${LIMIT_RESULTS}&seed=${SEED}`
-  )
-
-  const result = useMemo(
-    () => (data ? ([] as Patient[]).concat(...data.results) : []),
-    [data]
-  )
-
-  useEffect(() => {
-    setPatients((prevPatients) => [...prevPatients, ...result])
-  }, [result])
-
-  const loadMore = useCallback(() => {
-    setPage((prevPage) => prevPage + 1)
-  }, [])
 
   const showPatient = useCallback((patient: Patient) => {
     setModalPatient(patient)
     setShowModal(true)
   }, [])
-
-  if (patients.length < 1) {
-    return <h1 className="my-8 mx-auto">Loading...</h1>
-  }
 
   return (
     <>
@@ -117,7 +50,9 @@ const Table = () => {
               className="border px-8 py-4 text-center even:bg-blue-100 "
               key={patient.login.uuid}
             >
-              <td className="py-2">{patient.name.first}</td>
+              <td className="py-2">
+                {patient.name.first} {patient.name.last}
+              </td>
               <td className="py-2">{patient.gender}</td>
               <td className="py-2">
                 {new Date(patient.dob.date).toLocaleDateString()}

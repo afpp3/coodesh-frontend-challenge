@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Patient } from '../Table'
+import { Patient } from '~/pages'
 
 type ModalProps = {
   showModal: boolean

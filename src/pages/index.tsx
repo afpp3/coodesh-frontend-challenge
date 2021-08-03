@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Table from '../components/Table'
 import SearchInput from '../components/SearchInput'
 import { useFetch } from '~/hooks/useFetch'
+import { Loader } from '~/components/Loader'
 
 export type Patient = {
   login: {
@@ -104,10 +105,14 @@ export default function Home() {
 
         <SearchInput value={queryText} onChange={handleSearch} />
 
-        <Table
-          patients={queryText.length < 1 ? patients : filteredPatients}
-          loadMore={loadMore}
-        />
+        {patients.length < 1 ? (
+          <Loader />
+        ) : (
+          <Table
+            patients={queryText.length < 1 ? patients : filteredPatients}
+            loadMore={loadMore}
+          />
+        )}
       </main>
     </div>
   )

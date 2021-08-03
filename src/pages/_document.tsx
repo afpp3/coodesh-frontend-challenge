@@ -28,6 +28,12 @@ export default class MyDocument extends Document {
             href="/safari-pinned-tab.svg"
             color="#5bbad5"
           ></link>
+          <link
+            rel="preload"
+            href="https://randomuser.me/api/"
+            as="fetch"
+            crossOrigin="http://randomuser.me"
+          />
         </Head>
         <body>
           <Main></Main>

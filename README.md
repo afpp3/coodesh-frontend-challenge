@@ -1,6 +1,6 @@
 <h1 align="center">
   <img width= '200'  src="./public/logo.svg" style="background-color: #fff;"/>
-  <br>Desafio proposto pela <a href="https://coodesh.com/" target="_blank">Coodesh</a> <br/>
+  <br>Desafio proposto pela <a href="https://coodesh.com/" target="__blank">Coodesh</a> <br/>
 </h1>
 
 <p align="center">
@@ -22,15 +22,15 @@
 
 <!--ts-->
 
-- [Sobre o projeto](#💻-sobre-o-projeto)
-- [Funcionalidades](#⚙️-funcionalidades)
-- [Layout](#🎨-layout)
-- [Preview](#💻-preview)
-- [Como executar o projeto](#como-executar-o-projeto)
+- [Sobre o projeto](#-sobre-o-projeto)
+- [Funcionalidades](#-funcionalidades)
+- [Layout](#-layout)
+- [Preview](#-preview)
+- [Como executar o projeto](#-como-executar-o-projeto)
   - [Pré-requisitos](#pré-requisitos)
-  - [Rodando a aplicação web](#🧭-rodando-a-aplicação-web)
-- [Tecnologias](#🛠-tecnologias)
-- [Autor](#🦸-autor)
+  - [Rodando a aplicação web](#rodando-a-aplicação-web)
+- [Tecnologias](#-tecnologias)
+- [Autor](#-autor)
 
 <!--te-->
 
@@ -38,7 +38,7 @@
 
 O sistema consiste em uma web app para visualização e dos pacientes já cadastrados, no qual irá consumir a api para listar os pacientes, ao clicar no botão view, podemos expandir as informações do paciente selecionado onde irá mostrar a imagem do paciente e outras informações complementares.
 
-Desafio proposto pela <a href="https://coodesh.com/" target="_blank">Coodesh</a> que pode ser acessado pelo link: <a href="https://lab.coodesh.com/public-challenges/front-end-challenge-2021" target="_blank">Front-End Challenge 🏅 2021</a>
+Desafio proposto pela <a href="https://coodesh.com/" target="__blank">Coodesh</a> que pode ser acessado pelo link: <a href="https://lab.coodesh.com/public-challenges/front-end-challenge-2021" target="__blank">Front-End Challenge 🏅 2021</a>
 
 ---
 
